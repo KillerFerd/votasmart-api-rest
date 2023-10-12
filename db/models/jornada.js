@@ -6,7 +6,8 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Jornada extends Model {
     static associate(models) {
-      // ...
+      Jornada.belongsTo(models.Torneo, { foreignKey: 'idTorneo', field: 'id_torneo', allowNull: false });
+      Jornada.belongsTo(models.TipoJornada, { foreignKey: 'idTipo', field: 'id_tipo', allowNull: false });
     }
   }
   Jornada.init({
@@ -14,16 +15,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
-    },
-    idTorneo: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      field: 'id_torneo'
-    },
-    idTipo: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      field: 'id_tipo'
     },
     fechaInicio: {
       type: DataTypes.DATEONLY,

@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     estado: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     nombre: {
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     direccionOficina: {
       type: DataTypes.STRING(300),
-      allowNull: false,
+      allowNull: true,
       field: 'direccion_oficina'
     },
     correo: {
@@ -43,12 +43,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     direccionEstadio: {
       type: DataTypes.STRING(300),
-      allowNull: false,
+      allowNull: true,
       field: 'direccion_estadio'
     },
     telefono: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     cantidadTitulos: {
       type: DataTypes.INTEGER,
@@ -63,17 +63,20 @@ module.exports = (sequelize, DataTypes) => {
     imagenEscudo: {
       type: DataTypes.STRING(300),
       allowNull: false,
-      field: 'imagen_escudo'
+      field: 'imagen_escudo',
+      defaultValue: 'default'
     },
     imagenEquipo: {
       type: DataTypes.STRING(300),
       allowNull: false,
-      field: 'imagen_equipo'
+      field: 'imagen_equipo',
+      defaultValue: 'default'
     },
     imagenUniforme: {
       type: DataTypes.STRING(300),
       allowNull: false,
-      field: 'imagen_uniforme'
+      field: 'imagen_uniforme',
+      defaultValue: 'default'
     }
   }, {
     sequelize,

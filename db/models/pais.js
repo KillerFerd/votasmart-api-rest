@@ -6,7 +6,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Pais extends Model {
     static associate(models) {
-      // ...
+      Pais.hasMany(models.Jugador);
     }
   }
   Pais.init({

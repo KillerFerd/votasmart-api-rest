@@ -1,9 +1,9 @@
 torneo 
-[pk]id                          INTEGER
-[fk]id_estado                   INTEGER     
-[  ]nombre                      STRING(75)
-[  ]fecha_inicio                DATEONLY	NOTALLOWNULLS
-[  ]fecha_fin                   DATEONLY	NOTALLOWNULLS
+[pk]id                          INTEGER		NOTNULLS
+[fk]id_estado                   INTEGER     NOTNULLS
+[  ]nombre                      STRING(75)	NOTNULLS
+[  ]fecha_inicio                DATEONLY	NOTNULLS
+[  ]fecha_fin                   DATEONLY	NOTNULLS
 [  ]fecha_inicio_fase_equipos   DATEONLY
 [  ]fecha_fin_fase_equipos      DATEONLY
 [  ]fecha_inicio_cuartos_final	DATEONLY
@@ -15,7 +15,7 @@ torneo
 
 estado_torneo		
 [pk]id          INTEGER
-[  ]descripcion	STRING(75)
+[  ]descripcion	STRING(75)	NOTNULLS
 
 [Registros]
 1. Por Iniciar
@@ -23,15 +23,15 @@ estado_torneo
 3. Finalizado
 
 jornada
-[pk]id			    INTEGER
-[fk]id_torneo       INTEGER
-[fk]id_tipo		    INTEGER
+[pk]id			    INTEGER		NOTNULLS
+[fk]id_torneo       INTEGER		NOTNULLS
+[fk]id_tipo		    INTEGER		NOTNULLS
 [  ]fecha_inicio	DATEONLY
 [  ]fehca_fin       DATEONLY
 
 tipo_jornada
-[pk]id          INTEGER
-[  ]descripcion	STRING(75)
+[pk]id          INTEGER		NOTNULLS
+[  ]descripcion	STRING(75)	NOTNULLS
 
 [Registros]
 1. Jornada [1-22]
@@ -40,10 +40,10 @@ tipo_jornada
 4. Final
 
 equipo
-[pk]id                                      INTEGER
-[  ]estado				[activo, inactivo]	BOOLEAN					
-[  ]nombre                                  STRING(75)
-[  ]anio_fundacion                          INTEGER
+[pk]id                                      INTEGER		NOTNULLS
+[  ]estado									INTEGER		NOTNULLS	[1. activo, 0. inactivo]					
+[  ]nombre                                  STRING(75)	NOTNULLS
+[  ]anio_fundacion                          INTEGER		NOTNULLS
 [  ]direccion_oficina                       STRING(300)
 [  ]correo                                  STRING(300)
 [  ]estadio                                 STRING(75)
@@ -51,9 +51,9 @@ equipo
 [  ]telefono                                INTEGER
 [  ]cantidad_titulos                        INTEGER
 [  ]descripcion                             STRING(300)
-[  ]imagen_escudo                           STRING(300)
-[  ]imagen_equipo                           STRING(300)
-[  ]imagen_uniforme                         STRING(300)
+[  ]imagen_escudo                           STRING(300)	DEFAULTVALUE:'default'
+[  ]imagen_equipo                           STRING(300)	DEFAULTVALUE:'default'
+[  ]imagen_uniforme                         STRING(300)	DEFAULTVALUE:'default'
 
 jugador
 [pk]id                                              INTEGER
