@@ -1,0 +1,11 @@
+Instalar dependencias:
+npm i
+
+Iniciar el proyecto:
+npm run dev
+
+Ejecutar seeders:
+npm run db:seed
+
+Crear seed:
+npx sequelize-cli seed:generate --name seed-nombre-tabla

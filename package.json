@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "db:seed": "sequelize-cli db:seed:all"
   },
   "author": "Josue y Keren",
   "license": "ISC",

@@ -1,0 +1,266 @@
+torneo 
+[pk]id                          INTEGER
+[fk]id_estado                   INTEGER     
+[  ]nombre                      STRING(75)
+[  ]fecha_inicio                DATEONLY	NOTALLOWNULLS
+[  ]fecha_fin                   DATEONLY	NOTALLOWNULLS
+[  ]fecha_inicio_fase_equipos   DATEONLY
+[  ]fecha_fin_fase_equipos      DATEONLY
+[  ]fecha_inicio_cuartos_final	DATEONLY
+[  ]fecha_fin_cuartos_final     DATEONLY
+[  ]fecha_inicio_semifinales    DATEONLY
+[  ]fecha_fin_seminifinales     DATEONLY
+[  ]fecha_inicio_final          DATEONLY
+[  ]fecha_fin_final             DATEONLY
+
+estado_torneo		
+[pk]id          INTEGER
+[  ]descripcion	STRING(75)
+
+[Registros]
+1. Por Iniciar
+2. En Proceso
+3. Finalizado
+
+jornada
+[pk]id			    INTEGER
+[fk]id_torneo       INTEGER
+[fk]id_tipo		    INTEGER
+[  ]fecha_inicio	DATEONLY
+[  ]fehca_fin       DATEONLY
+
+tipo_jornada
+[pk]id          INTEGER
+[  ]descripcion	STRING(75)
+
+[Registros]
+1. Jornada [1-22]
+2. Cuartos de final
+3. Seminifinal
+4. Final
+
+equipo
+[pk]id                                      INTEGER
+[  ]estado				[activo, inactivo]	BOOLEAN					
+[  ]nombre                                  STRING(75)
+[  ]anio_fundacion                          INTEGER
+[  ]direccion_oficina                       STRING(300)
+[  ]correo                                  STRING(300)
+[  ]estadio                                 STRING(75)
+[  ]direccion_estadio                       STRING(300)
+[  ]telefono                                INTEGER
+[  ]cantidad_titulos                        INTEGER
+[  ]descripcion                             STRING(300)
+[  ]imagen_escudo                           STRING(300)
+[  ]imagen_equipo                           STRING(300)
+[  ]imagen_uniforme                         STRING(300)
+
+jugador
+[pk]id                                              INTEGER
+[fk]id_pais_origen                                  INTEGER
+[  ]estado					[activo, inactivo]      BOOLEAN
+[  ]nombre                                          STRING(75)
+[  ]apellido                                        STRING(75)
+[  ]anio_nacimiento                                 INTEGER
+[  ]lugar_nacimiento                                STRING(300)
+[  ]nacionalidad					                STRING(300)
+[  ]altura                                          DECIMAL(3:2)
+[  ]peso                                            DECIMAL(3:2)
+[  ]id_genero				[femenino, masculino]	BOOLEAN
+[  ]telefono                                        INTEGER
+[  ]correo                                          STRING(300)
+[  ]direccion_residencia                            STRING(300)
+[  ]imagen_jugador                                  STRING(300)
+[  ]imagen_identificacion                           STRING(300)
+
+[Consideraciones]
+1. la nacionalidad se genera por medio de la tabla "pais"
+
+pais
+[pk]id				INTEGER
+[  ]nombre          STRING(75)
+[  ]nacionalidad	STRING(75)
+
+tecnico
+[pk]id                                                  INTEGER
+[fk]id_cargo						                    INTEGER
+[  ]estado						[activo, inactivo]      BOOLEAN
+[  ]nombre                                              STRING(75)
+[  ]apellido                                            STRING(75)
+[  ]anio_nacimiento                                     DATEONLY
+[  ]genero						[femenino, masculino]	BOOLEAN
+
+cargo
+[pk]id          INTEGER
+[  ]descripcion	STRING(75)
+
+[Registros]
+1. Director Tecnico
+2. Entrenador
+3. Asistente
+4. Medio
+5. Staff
+6. Utilero
+
+arbitro
+[  ]id                                                  INTEGER
+[  ]estado						[activo, inactivo]      BOOLEAN
+[  ]nombre                                              STRING(75)
+[  ]apellido                                            STRING(75)
+[  ]anio_nacimiento                                     DATEONLY
+[  ]lugar_nacimiento                                    STRING(300)
+[  ]fifa						[si, no]                BOOLEAN
+[  ]telefono                                            INTEGER
+[  ]correo                                              STRING(300)
+[  ]direccion_residencia                                STRING(300)
+[  ]altura                                              DECIMAL(3:2)
+[  ]peso                                                DECIMAL(3:2)
+[  ]genero						[femenino, masculino]	BOOLEAN
+[  ]imagen_arbitro                                      STRING(300)
+[  ]imagen_identificacion                               STRING(300)
+
+partido
+[pk]id                              INTEGER
+[fk]id_jornada                      INTEGER
+[fk]id_equipo_local                 INTEGER
+[fk]id_equipo_visitante             INTEGER
+[  ]id_equipo_ganador               INTEGER
+[  ]id_equipo_perdedor              INTEGER
+[  ]fecha                           DATEONLY
+[  ]hora                            TIME
+[  ]goles_local                     INTEGER
+[  ]goles_visitante                 INTEGER
+[  ]empate				[si, no]	BOOLEAN
+[  ]puntos_local                    INTEGER
+[  ]puntos_visitante                INTEGER
+
+[Validaciones]
+1. No se puede asigar el mismo id de equipo para visitante y ganador
+2. Por jornada tipo "jornada #" no puede repetirse el mismo equipo
+
+arbitro_partido
+[pk]id          INTEGER
+[fk]id_partido  INTEGER
+[fk]id_arbitro	INTEGER
+[fk]id_tipo	    INTEGER
+
+[Consideraciones]
+1. Esta tabla sirve como nomina del partido
+
+[Validaciones]
+1. Por partido solo se permiten 4 arbitros de diferente tipo
+
+tipo_arbitro_partido
+[pk]id          INTEGER
+[  ]descripcion	STRING(75)
+
+[Registros]
+1. Central
+2. Asistente 1
+3. Asistente 2
+4. Cuarto
+
+jugador_partido
+[pk]id                  INTEGER
+[fk]id_jugador          INTEGER
+[fk]id_partido          INTEGER
+[fk]id_posicion         INTEGER
+[fk]id_tipo             INTEGER
+[  ]goles               INTEGER
+[  ]tarjetas_rojas      INTEGER
+[  ]tarjetas_amarillas	INTEGER
+
+[Consideraciones]
+1. Esta tabla sirve como nomina del partido
+
+[Validaciones]
+1. Tomar en consideración las validaciones de posición, numeros y tipos
+
+tipo_jugador_partido
+[pk]id          INTEGER
+[  ]descripcion	STRING(75)
+
+[Registros]
+1. Jugador
+2. Suplente
+3. Lesionado
+4. Ausente
+
+tecnico_partido
+[pk]id                  INTEGER
+[fk]id_tecnico          INTEGER
+[fk]id_partido          INTEGER
+[fk]id_cargo            INTEGER
+[  ]tarjetas_rojas      INTEGER
+[  ]tarjetas_amarillas	INTEGER
+
+[Consideraciones]
+1. Esta tabla sirve como nomina del partido
+
+[Validaciones]
+1. Tomar en consideración las validaciones de cargos
+
+equipo_torneo
+[pk]id          INTEGER
+[fk]id_torneo   INTEGER
+[fk]id_equipo	INTEGER
+
+[Validaciones]
+1. No pueden haber más de x registros con el mismo id_torneo
+2. No se puede repetir dos registros con el mismo id_torneo e id_equipo
+	
+jugador_equipo_torneo
+[k]id                                           INTEGER
+[f]id_equipo_torneo                             INTEGER
+[u]id_jugador                                   INTEGER
+[i]id_posicion                                  INTEGER
+[i]id_tipo					[jugador, suplente]	INTEGER
+[i]numero									    INTEGER
+
+[Validaciones]
+1. No puede existir un registro si ya existe el mismo id_jugador en otro registro que tenga el mismo id_torneo. 
+2. No pueden haber más de x registros por id_equipo_torneo 
+3. No se puede repetir dos registros con el mismo id_equipo_torneo e id_jugador
+4. No puede existir otro jugador con el mismo número
+5. Considerar cantidad de jugadores por tipo y posicion
+6. Tomar en consideración las validaciones de posición, numeros y tipos
+
+[Consideraciones]
+1. Esta entidad también sirve para asignar la nomina principal del equipo en el torneo
+
+tipo_jugador
+[pk]id          INTEGER
+[  ]descripcion	STRING(75)
+
+[Registros]
+1. Jugador
+2. Suplente
+
+posicion
+[pk]id          INTEGER
+[  ]descripcion	STRING(75)
+
+[Registros]
+1. Posiciones ...
+		
+tecnico_equipo_torneo
+[pk]id              	INTEGER
+[fk]id_equipo_torneo	INTEGER
+[fk]id_tecnico      	INTEGER
+[fk]id_cargo			INTEGER
+
+[Validaciones]
+1. No puede existir un registro si ya existe el mismo id_jugador en otro registro que tenga el mismo id_torneo. 
+2. No pueden haber más de x registros por id_equipo_torneo 
+3. No se puede repetir dos registros con el mismo id_equipo_torneo e id_jugador
+4. Considerar cantidad de tecnicos por tipo y posicion
+5. Tomar en consideración las validaciones de cargos
+
+[Consideraciones]
+1. Esta entidad también sirve para asignar la nomina principal del equipo en el torneo
+	
+cambio
+[pk]id                  INTEGER
+[fk]id_partido          INTEGER
+[fk]id_jugador_entra	INTEGER
+[fk]id_jugador_sale     INTEGER
