@@ -20,7 +20,6 @@ module.exports.createTecnicoEquipoTorneo = async (req, res) => {
         // Por ejemplo, utiliza idEquipoTorneo, idTecnico y idCargo si son únicos.
         idEquipoTorneo: req.body.idEquipoTorneo,
         idTecnico: req.body.idTecnico,
-        idCargo: req.body.idCargo,
       },
       defaults: { ...req.body },
     });

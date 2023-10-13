@@ -40,5 +40,5 @@ module.exports = {
     return queryInterface.bulkDelete('cargo', null, {});
   },
 
-  order: 3 
+  order: 2,
 };

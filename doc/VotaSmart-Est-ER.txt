@@ -249,10 +249,9 @@ posicion
 1. Posiciones ...
 		
 tecnico_equipo_torneo
-[pk]id              	INTEGER
-[fk]id_equipo_torneo	INTEGER
-[fk]id_tecnico      	INTEGER
-[fk]id_cargo			INTEGER
+[pk]id              	INTEGER	NOTNULLS
+[fk]id_equipo_torneo	INTEGER NOTNULLS
+[fk]id_tecnico      	INTEGER NOTNULLS
 
 [Validaciones]
 1. No puede existir un registro si ya existe el mismo id_jugador en otro registro que tenga el mismo id_torneo. 

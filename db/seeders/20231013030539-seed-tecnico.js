@@ -200,5 +200,5 @@ module.exports = {
     return queryInterface.bulkDelete("tecnico", null, {});
   },
 
-  order: 4,
+  order: 3,
 };
