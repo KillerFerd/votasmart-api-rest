@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       Partido.belongsTo(models.Equipo, { foreignKey: 'idEquipoVisitante', field: 'id_equipo_visitante', allowNull: false });
       Partido.hasMany(models.ArbitroPartido, {foreignKey: "idPartido", field: "id_partido", allowNull: false,});
       Partido.hasMany(models.JugadorPartido, {foreignKey: "idPartido", field: "id_partido", allowNull: false,});
+      Partido.hasMany(models.TecnicoPartido, {foreignKey: "idPartido", field: "id_partido", allowNull: false,});
     }
   }
   Partido.init({

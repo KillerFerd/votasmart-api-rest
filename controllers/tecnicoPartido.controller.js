@@ -20,7 +20,6 @@ module.exports.createTecnicoPartido = async (req, res) => {
         // Por ejemplo, utiliza idTecnico, idPartido e idCargo si son únicos.
         idTecnico: req.body.idTecnico,
         idPartido: req.body.idPartido,
-        idCargo: req.body.idCargo,
       },
       defaults: { ...req.body },
     });

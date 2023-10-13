@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   class Tecnico extends Model {
     static associate(models) {
       Tecnico.belongsTo(models.Cargo, {foreignKey: "idCargo", field: "id_cargo", allowNull: false,});
+      Tecnico.hasMany(models.TecnicoPartido, {foreignKey: "idTecnico", field: "id_tecnico", allowNull: false,});
     }
   }
   Tecnico.init({

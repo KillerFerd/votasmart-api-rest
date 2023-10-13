@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Torneo.belongsTo(models.EstadoTorneo, { foreignKey: 'idEstado', field: 'id_estado', allowNull: false });
       Torneo.hasMany(models.Jornada, { foreignKey: 'idTorneo', field: 'id_torneo', allowNull: false });
+      Torneo.hasMany(models.EquipoTorneo, { foreignKey: 'idTorneo', field: 'id_torneo', allowNull: false });
     }
   }
   Torneo.init({
