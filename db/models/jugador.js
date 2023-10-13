@@ -7,6 +7,8 @@ module.exports = (sequelize, DataTypes) => {
       Jugador.belongsTo(models.Pais, {foreignKey: "idPaisOrigen", field: "id_pais_origen", allowNull: false,});
       Jugador.hasMany(models.JugadorPartido, {foreignKey: "idJugador", field: "id_jugador", allowNull: false,});
       Jugador.hasMany(models.JugadorEquipoTorneo, {foreignKey: "idJugador", field: "id_jugador", allowNull: false,});
+      Jugador.hasMany(models.Cambio, {foreignKey: "idJugadorEntra", field: "id_jugador_entra", allowNull: false,});
+      Jugador.hasMany(models.Cambio, {foreignKey: "idJugadorSale", field: "id_jugador_sale", allowNull: false,});
     }
   }
   Jugador.init(
