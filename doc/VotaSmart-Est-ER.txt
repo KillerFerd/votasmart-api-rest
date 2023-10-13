@@ -270,7 +270,7 @@ Estas 11 posiciones se distribuyen en el campo de la siguiente manera:
 1. Esta entidad también sirve para asignar la nomina principal del equipo en el torneo
 	
 cambio
-[pk]id                  INTEGER
-[fk]id_partido          INTEGER
-[fk]id_jugador_entra	INTEGER
-[fk]id_jugador_sale     INTEGER
+[pk]id                  INTEGER	NOTNULLS
+[fk]id_partido          INTEGER	NOTNULLS
+[fk]id_jugador_entra	INTEGER	NOTNULLS
+[fk]id_jugador_sale     INTEGER	NOTNULLS
