@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Jornada.belongsTo(models.Torneo, { foreignKey: 'idTorneo', field: 'id_torneo', allowNull: false });
       Jornada.belongsTo(models.TipoJornada, { foreignKey: 'idTipo', field: 'id_tipo', allowNull: false });
+      Jornada.hasMany(models.Partido, { foreignKey: 'idJornada', field: 'id_jornada', allowNull: false });
     }
   }
   Jornada.init({

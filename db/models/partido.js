@@ -6,7 +6,11 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Partido extends Model {
     static associate(models) {
-      // ...
+      Partido.belongsTo(models.Jornada, { foreignKey: 'idJornada', field: 'id_jornada', allowNull: false });
+      Partido.belongsTo(models.Equipo, { foreignKey: 'idEquipoLocal', field: 'id_equipo_local', allowNull: false });
+      Partido.belongsTo(models.Equipo, { foreignKey: 'idEquipoVisitante', field: 'id_equipo_visitante', allowNull: false });
+      Partido.hasMany(models.ArbitroPartido, {foreignKey: "idPartido", field: "id_partido", allowNull: false,});
+      Partido.hasMany(models.JugadorPartido, {foreignKey: "idPartido", field: "id_partido", allowNull: false,});
     }
   }
   Partido.init({
@@ -14,21 +18,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
-    },
-    idJornada: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      field: 'id_jornada'
-    },
-    idEquipoLocal: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      field: 'id_equipo_local'
-    },
-    idEquipoVisitante: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      field: 'id_equipo_visitante'
     },
     idEquipoGanador: {
       type: DataTypes.INTEGER,
@@ -59,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
       field: 'goles_visitante'
     },
     empate: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     puntosLocal: {

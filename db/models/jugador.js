@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   class Jugador extends Model {
     static associate(models) {
       Jugador.belongsTo(models.Pais, {foreignKey: "idPaisOrigen", field: "id_pais_origen", allowNull: false,});
+      Jugador.hasMany(models.JugadorPartido, {foreignKey: "idJugador", field: "id_jugador", allowNull: false,});
     }
   }
   Jugador.init(
@@ -51,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
       genero: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: "id_genero",
+        field: "genero",
       },
       telefono: {
         type: DataTypes.INTEGER,

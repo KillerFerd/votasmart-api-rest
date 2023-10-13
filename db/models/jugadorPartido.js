@@ -6,7 +6,10 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class JugadorPartido extends Model {
     static associate(models) {
-      // ...
+      JugadorPartido.belongsTo(models.TipoJugadorPartido, {foreignKey: "idTipo", field: "id_tipo", allowNull: false,});
+      JugadorPartido.belongsTo(models.Posicion, {foreignKey: "idPosicion", field: "id_posicion", allowNull: false,});
+      JugadorPartido.belongsTo(models.Jugador, {foreignKey: "idJugador", field: "id_jugador", allowNull: false,});
+      JugadorPartido.belongsTo(models.Partido, {foreignKey: "idPartido", field: "id_partido", allowNull: false,});
     }
   }
   JugadorPartido.init({
@@ -14,26 +17,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
-    },
-    idJugador: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      field: 'id_jugador'
-    },
-    idPartido: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      field: 'id_partido'
-    },
-    idPosicion: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      field: 'id_posicion'
-    },
-    idTipo: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      field: 'id_tipo'
     },
     goles: {
       type: DataTypes.INTEGER,

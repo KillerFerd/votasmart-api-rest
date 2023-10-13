@@ -19,7 +19,7 @@ const posicionRoutes = require("./posicion.routes");
 const tecnicoRoutes = require("./tecnico.routes");
 const tecnicoEquipoTorneoRoutes = require("./tecnicoEquipoTorneo.routes");
 const tecnicoPartidoRoutes = require("./tecnicoPartido.routes");
-const tipoArbitroPartidoRoutes = require("./tipoArbitroPartido.routes");
+const tipoArbitroRoutes = require("./tipoArbitro.routes");
 const tipoJornadaRoutes = require("./tipoJornada.routes");
 const tipoJugadorRoutes = require("./tipoJugador.routes");
 const tipoJugadorPartidoRoutes = require("./tipoJugadorPartido.routes");
@@ -43,7 +43,7 @@ router.use('/posicion', posicionRoutes)
 router.use('/tecnico', tecnicoRoutes)            
 router.use('/tecnicoEquipoTorneo', tecnicoEquipoTorneoRoutes)
 router.use('/tecnicoPartido', tecnicoPartidoRoutes)     
-router.use('/tipoArbitroPartido', tipoArbitroPartidoRoutes) 
+router.use('/tipoArbitro', tipoArbitroRoutes) 
 router.use('/tipoJornada', tipoJornadaRoutes)        
 router.use('/tipoJugador', tipoJugadorRoutes)        
 router.use('/tipoJugadorPartido', tipoJugadorPartidoRoutes) 

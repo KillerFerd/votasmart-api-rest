@@ -4,12 +4,12 @@ const {
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class TipoArbitroPartido extends Model {
+  class TipoArbitro extends Model {
     static associate(models) {
-      // ...
+      TipoArbitro.hasMany(models.ArbitroPartido, {foreignKey: "idTipo", field: "id_tipo", allowNull: false,});
     }
   }
-  TipoArbitroPartido.init({
+  TipoArbitro.init({
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -21,11 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'TipoArbitroPartido',
+    modelName: 'TipoArbitro',
     freezeTableName: true,
-    tableName: 'tipo_arbitro_partido',
+    tableName: 'tipo_arbitro',
     underscored: true
   });
 
-  return TipoArbitroPartido;
+  return TipoArbitro;
 };

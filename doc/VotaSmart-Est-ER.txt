@@ -51,49 +51,49 @@ equipo
 [  ]telefono                                INTEGER
 [  ]cantidad_titulos                        INTEGER
 [  ]descripcion                             STRING(300)
-[  ]imagen_escudo                           STRING(300)	DEFAULTVALUE:'default'
-[  ]imagen_equipo                           STRING(300)	DEFAULTVALUE:'default'
-[  ]imagen_uniforme                         STRING(300)	DEFAULTVALUE:'default'
+[  ]imagen_escudo                           STRING(300)	NOTNULLS	DEFAULTVALUE:'default'
+[  ]imagen_equipo                           STRING(300)	NOTNULLS	DEFAULTVALUE:'default'
+[  ]imagen_uniforme                         STRING(300)	NOTNULLS	DEFAULTVALUE:'default'
 
 jugador
-[pk]id                                              INTEGER
-[fk]id_pais_origen                                  INTEGER
-[  ]estado					[activo, inactivo]      BOOLEAN
-[  ]nombre                                          STRING(75)
-[  ]apellido                                        STRING(75)
-[  ]anio_nacimiento                                 INTEGER
+[pk]id                                              INTEGER			NOTNULLS
+[fk]id_pais_origen                                  INTEGER			NOTNULLS
+[  ]estado										    INTEGER			NOTNULLS	[1: activo, 0: inactivo]
+[  ]nombre                                          STRING(75)		NOTNULLS
+[  ]apellido                                        STRING(75)		NOTNULLS
+[  ]anio_nacimiento                                 INTEGER			NOTNULLS
 [  ]lugar_nacimiento                                STRING(300)
 [  ]nacionalidad					                STRING(300)
 [  ]altura                                          DECIMAL(3:2)
 [  ]peso                                            DECIMAL(3:2)
-[  ]id_genero				[femenino, masculino]	BOOLEAN
+[  ]genero											INTEGER			NOTNULLS	[1: femenino, 0: masculino]
 [  ]telefono                                        INTEGER
 [  ]correo                                          STRING(300)
 [  ]direccion_residencia                            STRING(300)
-[  ]imagen_jugador                                  STRING(300)
-[  ]imagen_identificacion                           STRING(300)
+[  ]imagen_jugador                                  STRING(300)		NOTNULLS	DEFAULTVALUE:'default'
+[  ]imagen_identificacion                           STRING(300)		NOTNULLS	DEFAULTVALUE:'default'
 
 [Consideraciones]
 1. la nacionalidad se genera por medio de la tabla "pais"
 
 pais
-[pk]id				INTEGER
-[  ]nombre          STRING(75)
-[  ]nacionalidad	STRING(75)
+[pk]id				INTEGER		NOTNULLS
+[  ]nombre          STRING(75)	NOTNULLS
+[  ]nacionalidad	STRING(75)	NOTNULLS
 
 tecnico
-[pk]id                                                  INTEGER
-[fk]id_cargo						                    INTEGER
-[  ]estado						[activo, inactivo]      BOOLEAN
-[  ]nombre                                              STRING(75)
-[  ]apellido                                            STRING(75)
-[  ]anio_nacimiento                                     DATEONLY
-[  ]genero						[femenino, masculino]	BOOLEAN
+[pk]id           	INTEGER		NOTNULLS	
+[fk]id_cargo		INTEGER		NOTNULLS
+[  ]estado			INTEGER		NOTNULLS	[1: activo, 0: inactivo]
+[  ]nombre       	STRING(75)	NOTNULLS
+[  ]apellido     	STRING(75)	NOTNULLS
+[  ]anio_nacimiento	DATEONLY	NOTNULLS
+[  ]genero			INTEGER		NOTNULLS	[1: femenino, 0: masculino]
 
 cargo
-[pk]id          INTEGER
-[  ]descripcion	STRING(75)
-
+[pk]id          INTEGER		NOTNULLS	
+[  ]descripcion	STRING(75)	NOTNULLS
+                            
 [Registros]
 1. Director Tecnico
 2. Entrenador
@@ -103,46 +103,46 @@ cargo
 6. Utilero
 
 arbitro
-[  ]id                                                  INTEGER
-[  ]estado						[activo, inactivo]      BOOLEAN
-[  ]nombre                                              STRING(75)
-[  ]apellido                                            STRING(75)
-[  ]anio_nacimiento                                     DATEONLY
-[  ]lugar_nacimiento                                    STRING(300)
-[  ]fifa						[si, no]                BOOLEAN
-[  ]telefono                                            INTEGER
-[  ]correo                                              STRING(300)
-[  ]direccion_residencia                                STRING(300)
-[  ]altura                                              DECIMAL(3:2)
-[  ]peso                                                DECIMAL(3:2)
-[  ]genero						[femenino, masculino]	BOOLEAN
-[  ]imagen_arbitro                                      STRING(300)
-[  ]imagen_identificacion                               STRING(300)
+[PK]id						INTEGER			NOTNULLS
+[  ]estado					INTEGER			NOTNULLS
+[  ]nombre					STRING(75)		NOTNULLS
+[  ]apellido				STRING(75)		NOTNULLS
+[  ]anio_nacimiento			INTEGER			NOTNULLS
+[  ]lugar_nacimiento		STRING(300)
+[  ]fifa					INTEGER			NOTNULLS	[1: si, 0: no]
+[  ]telefono				INTEGER
+[  ]correo					STRING(300)
+[  ]direccion_residencia	STRING(300)
+[  ]altura					DECIMAL(3:2)	
+[  ]peso					DECIMAL(3:2)
+[  ]genero					INTEGER			NOTNULLS	[1: femenino, 0: masculino]
+[  ]imagen_arbitro			STRING(300)		NOTNULLS	DEFAULTVALUE:'default'
+[  ]imagen_identificacion	STRING(300)		NOTNULLS	DEFAULTVALUE:'default'
 
 partido
-[pk]id                              INTEGER
-[fk]id_jornada                      INTEGER
-[fk]id_equipo_local                 INTEGER
-[fk]id_equipo_visitante             INTEGER
-[  ]id_equipo_ganador               INTEGER
-[  ]id_equipo_perdedor              INTEGER
-[  ]fecha                           DATEONLY
-[  ]hora                            TIME
-[  ]goles_local                     INTEGER
-[  ]goles_visitante                 INTEGER
-[  ]empate				[si, no]	BOOLEAN
-[  ]puntos_local                    INTEGER
-[  ]puntos_visitante                INTEGER
+[pk]id					INTEGER		NOTNULLS
+[fk]id_jornada			INTEGER		NOTNULLS
+[fk]id_equipo_local		INTEGER		NOTNULLS
+[fk]id_equipo_visitante	INTEGER		NOTNULLS
+[  ]id_equipo_ganador	INTEGER		
+[  ]id_equipo_perdedor	INTEGER
+[  ]fecha				DATEONLY	
+[  ]hora				TIME
+[  ]goles_local			INTEGER
+[  ]goles_visitante		INTEGER
+[  ]empate				INTEGER		[1: si, 0: no]	
+[  ]puntos_local		INTEGER
+[  ]puntos_visitante	INTEGER
 
 [Validaciones]
 1. No se puede asigar el mismo id de equipo para visitante y ganador
 2. Por jornada tipo "jornada #" no puede repetirse el mismo equipo
 
 arbitro_partido
-[pk]id          INTEGER
-[fk]id_partido  INTEGER
-[fk]id_arbitro	INTEGER
-[fk]id_tipo	    INTEGER
+[pk]id          INTEGER	NOTNULLS
+[fk]id_partido  INTEGER	NOTNULLS
+[fk]id_arbitro	INTEGER	NOTNULLS
+[fk]id_tipo	    INTEGER	NOTNULLS
 
 [Consideraciones]
 1. Esta tabla sirve como nomina del partido
@@ -151,8 +151,8 @@ arbitro_partido
 1. Por partido solo se permiten 4 arbitros de diferente tipo
 
 tipo_arbitro_partido
-[pk]id          INTEGER
-[  ]descripcion	STRING(75)
+[pk]id          INTEGER		NOTNULLS
+[  ]descripcion	STRING(75)	NOTNULLS
 
 [Registros]
 1. Central
@@ -161,11 +161,11 @@ tipo_arbitro_partido
 4. Cuarto
 
 jugador_partido
-[pk]id                  INTEGER
-[fk]id_jugador          INTEGER
-[fk]id_partido          INTEGER
-[fk]id_posicion         INTEGER
-[fk]id_tipo             INTEGER
+[pk]id                  INTEGER	NOTNULLS
+[fk]id_jugador          INTEGER	NOTNULLS
+[fk]id_partido          INTEGER	NOTNULLS
+[fk]id_posicion         INTEGER	NOTNULLS
+[fk]id_tipo             INTEGER	NOTNULLS
 [  ]goles               INTEGER
 [  ]tarjetas_rojas      INTEGER
 [  ]tarjetas_amarillas	INTEGER
@@ -223,6 +223,12 @@ jugador_equipo_torneo
 3. No se puede repetir dos registros con el mismo id_equipo_torneo e id_jugador
 4. No puede existir otro jugador con el mismo número
 5. Considerar cantidad de jugadores por tipo y posicion
+Estas 11 posiciones se distribuyen en el campo de la siguiente manera:
+
+1 Portero
+4 Defensores
+4 Centrocampistas
+2 Delanteros
 6. Tomar en consideración las validaciones de posición, numeros y tipos
 
 [Consideraciones]
@@ -254,6 +260,12 @@ tecnico_equipo_torneo
 2. No pueden haber más de x registros por id_equipo_torneo 
 3. No se puede repetir dos registros con el mismo id_equipo_torneo e id_jugador
 4. Considerar cantidad de tecnicos por tipo y posicion
+Estas 11 posiciones se distribuyen en el campo de la siguiente manera:
+
+1 Portero
+4 Defensores
+4 Centrocampistas
+2 Delanteros
 5. Tomar en consideración las validaciones de cargos
 
 [Consideraciones]

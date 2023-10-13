@@ -6,7 +6,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Cargo extends Model {
     static associate(models) {
-      // ...
+      Cargo.hasMany(models.Tecnico, {foreignKey: "idCargo", field: "id_cargo", allowNull: false,});
     }
   }
   Cargo.init({

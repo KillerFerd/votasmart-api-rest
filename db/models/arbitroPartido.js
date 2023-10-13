@@ -6,7 +6,9 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class ArbitroPartido extends Model {
     static associate(models) {
-      // ...
+      ArbitroPartido.belongsTo(models.TipoArbitro, {foreignKey: "idTipo", field: "id_tipo", allowNull: false,});
+      ArbitroPartido.belongsTo(models.Arbitro, {foreignKey: "idArbitro", field: "id_arbitro", allowNull: false,});
+      ArbitroPartido.belongsTo(models.Partido, {foreignKey: "idPartido", field: "id_partido", allowNull: false,});
     }
   }
   ArbitroPartido.init({
@@ -14,21 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
-    },
-    idPartido: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      field: 'id_partido'
-    },
-    idArbitro: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      field: 'id_arbitro'
-    },
-    idTipo: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      field: 'id_tipo'
     }
   }, {
     sequelize,

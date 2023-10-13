@@ -6,7 +6,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Arbitro extends Model {
     static associate(models) {
-      // ...
+      Arbitro.hasMany(models.ArbitroPartido, {foreignKey: "idArbitro", field: "id_arbitro", allowNull: false,});
     }
   }
   Arbitro.init({
@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     estado: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     nombre: {
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     anioNacimiento: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.INTEGER,
       allowNull: false,
       field: 'anio_nacimiento'
     },
@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
       field: 'lugar_nacimiento'
     },
     fifa: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     telefono: {
@@ -63,18 +63,20 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true
     },
     genero: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     imagenArbitro: {
       type: DataTypes.STRING(300),
-      allowNull: true,
-      field: 'imagen_arbitro'
+      allowNull: false,
+      field: 'imagen_arbitro',
+      defaultValue: 'default'
     },
     imagenIdentificacion: {
       type: DataTypes.STRING(300),
-      allowNull: true,
-      field: 'imagen_identificacion'
+      allowNull: false,
+      field: 'imagen_identificacion',
+      defaultValue: 'default'
     }
   }, {
     sequelize,

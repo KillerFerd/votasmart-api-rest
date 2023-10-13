@@ -6,7 +6,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Tecnico extends Model {
     static associate(models) {
-      // ...
+      Tecnico.belongsTo(models.Cargo, {foreignKey: "idCargo", field: "id_cargo", allowNull: false,});
     }
   }
   Tecnico.init({
@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     idCargo: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       field: 'id_cargo'
     },
     estado: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     nombre: {
@@ -33,12 +33,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     anioNacimiento: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.INTEGER,
       allowNull: false,
       field: 'anio_nacimiento'
     },
     genero: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {
