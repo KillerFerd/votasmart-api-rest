@@ -177,8 +177,8 @@ jugador_partido
 1. Tomar en consideración las validaciones de posición, numeros y tipos
 
 tipo_jugador_partido
-[pk]id          INTEGER
-[  ]descripcion	STRING(75)
+[pk]id          INTEGER		NOTNULLS
+[  ]descripcion	STRING(75)	NOTNULLS
 
 [Registros]
 1. Jugador
@@ -187,10 +187,9 @@ tipo_jugador_partido
 4. Ausente
 
 tecnico_partido
-[pk]id                  INTEGER
-[fk]id_tecnico          INTEGER
-[fk]id_partido          INTEGER
-[fk]id_cargo            INTEGER
+[pk]id                  INTEGER	NOTNULLS
+[fk]id_tecnico          INTEGER	NOTNULLS
+[fk]id_partido          INTEGER	NOTNULLS
 [  ]tarjetas_rojas      INTEGER
 [  ]tarjetas_amarillas	INTEGER
 
@@ -201,21 +200,21 @@ tecnico_partido
 1. Tomar en consideración las validaciones de cargos
 
 equipo_torneo
-[pk]id          INTEGER
-[fk]id_torneo   INTEGER
-[fk]id_equipo	INTEGER
+[pk]id          INTEGER	NOTNULLS
+[fk]id_torneo   INTEGER	NOTNULLS
+[fk]id_equipo	INTEGER	NOTNULLS
 
 [Validaciones]
 1. No pueden haber más de x registros con el mismo id_torneo
 2. No se puede repetir dos registros con el mismo id_torneo e id_equipo
 	
 jugador_equipo_torneo
-[k]id                                           INTEGER
-[f]id_equipo_torneo                             INTEGER
-[u]id_jugador                                   INTEGER
-[i]id_posicion                                  INTEGER
-[i]id_tipo					[jugador, suplente]	INTEGER
-[i]numero									    INTEGER
+[k]id				INTEGER	NOTNULLS
+[f]id_equipo_torneo	INTEGER NOTNULLS
+[u]id_jugador		INTEGER NOTNULLS
+[i]id_posicion		INTEGER NOTNULLS
+[i]id_tipo			INTEGER NOTNULLS
+[i]numero			INTEGER NOTNULLS
 
 [Validaciones]
 1. No puede existir un registro si ya existe el mismo id_jugador en otro registro que tenga el mismo id_torneo. 
@@ -235,16 +234,16 @@ Estas 11 posiciones se distribuyen en el campo de la siguiente manera:
 1. Esta entidad también sirve para asignar la nomina principal del equipo en el torneo
 
 tipo_jugador
-[pk]id          INTEGER
-[  ]descripcion	STRING(75)
+[pk]id          INTEGER		NOTNULLS
+[  ]descripcion	STRING(75)	NOTNULLS
 
 [Registros]
 1. Jugador
 2. Suplente
 
 posicion
-[pk]id          INTEGER
-[  ]descripcion	STRING(75)
+[pk]id          INTEGER		NOTNULLS
+[  ]descripcion	STRING(75)	NOTNULLS
 
 [Registros]
 1. Posiciones ...

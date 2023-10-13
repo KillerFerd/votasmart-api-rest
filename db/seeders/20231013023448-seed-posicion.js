@@ -30,5 +30,5 @@ module.exports = {
     return queryInterface.bulkDelete("posicion", null, {});
   },
 
-  order: 4,
+  order: 3,
 };

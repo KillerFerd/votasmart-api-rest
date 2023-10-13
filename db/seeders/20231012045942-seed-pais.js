@@ -1276,5 +1276,5 @@ module.exports = {
     return queryInterface.bulkDelete('pais', null, {});
   },
 
-  order: 3
+  order: 2,
 };

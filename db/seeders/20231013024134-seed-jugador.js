@@ -290,5 +290,5 @@ module.exports = {
     return queryInterface.bulkDelete("jugador", null, {});
   },
 
-  order: 4,
+  order: 3,
 };

@@ -6,7 +6,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class TipoJugador extends Model {
     static associate(models) {
-      // ...
+      TipoJugador.hasMany(models.JugadorEquipoTorneo, {foreignKey: "idTipo", field: "id_tipo", allowNull: false,});
     }
   }
   TipoJugador.init({
