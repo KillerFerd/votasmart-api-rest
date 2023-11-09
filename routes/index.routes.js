@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // RUTAS:
+const rootRoutes = require('./root.routes');
 const arbitroRoutes = require("./arbitro.routes");	
 const arbitroPartidoRoutes = require("./arbitroPartido.routes");
 const cambioRoutes = require("./cambio.routes");
@@ -26,6 +27,7 @@ const tipoJugadorPartidoRoutes = require("./tipoJugadorPartido.routes");
 const torneoRoutes = require("./torneo.routes");
 
 // USAR EN:
+router.use('/', rootRoutes);
 router.use('/arbitro', arbitroRoutes)            
 router.use('/arbitroPartido', arbitroPartidoRoutes)     
 router.use('/cambio', cambioRoutes)             

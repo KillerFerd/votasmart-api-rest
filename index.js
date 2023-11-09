@@ -1,14 +1,22 @@
 const express = require('express');
-const routes = require('./routes/index.routes');
-const PORT = 3002;
-const db = require('./db/models/index')
 const app = express();
+const PORT = process.env.PORT || 3003;
+const routes = require('./routes/index.routes');
+const swaggerUI = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
+const options = require('./swaggerOptions');
+const swaggerSpecs = swaggerJsDoc(options);
+const cors = require('cors');
+const db = require('./db/models/index')
 
 app.use(express.json());
-app.use('/app', routes);
+app.use(cors());
+app.use('/api/', routes);
+app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 
 db.sequelize.sync({force: true}).then(() =>{
-    app.listen(PORT, () =>{
-        console.log(`Server running in port ${PORT}`);
-    });
+    app.listen(PORT, () => {
+        console.log(`el servidor esta corriendo en el puerto ${PORT}`);
+    })
 });
+

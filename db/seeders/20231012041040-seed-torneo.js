@@ -10,6 +10,14 @@ module.exports = {
         id_estado: 1, 
         created_at: new Date(),
         updated_at: new Date()
+      },
+      {
+        nombre: 'Torneo de prueba2',
+        fecha_inicio: '2022-10-10',
+        fecha_fin: '2022-11-10',
+        id_estado: 1, 
+        created_at: new Date(),
+        updated_at: new Date()
       }
     ]);
   },

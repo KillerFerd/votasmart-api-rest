@@ -10,10 +10,15 @@
   },
   "author": "Josue y Keren",
   "license": "ISC",
+  "keywords": [],
   "dependencies": {
     "express": "^4.18.2",
     "sequelize": "^6.33.0",
+    "cors": "^2.8.5",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.3",
     "tedious": "^16.4.1"
+    
   },
   "devDependencies": {
     "nodemon": "^3.0.1",
