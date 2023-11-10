@@ -25,5 +25,7 @@ module.exports = {
     return queryInterface.bulkDelete('estado_torneo', null, {});
   },
 
+
+  
   order: 1 
 };
