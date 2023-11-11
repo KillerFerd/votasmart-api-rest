@@ -25,6 +25,7 @@ const tipoJornadaRoutes = require("./tipoJornada.routes");
 const tipoJugadorRoutes = require("./tipoJugador.routes");
 const tipoJugadorPartidoRoutes = require("./tipoJugadorPartido.routes");
 const torneoRoutes = require("./torneo.routes");
+const usuarioRoutes = require("./usuario.routes");
 
 // USAR EN:
 router.use('/', rootRoutes);
@@ -50,5 +51,6 @@ router.use('/tipoJornada', tipoJornadaRoutes)
 router.use('/tipoJugador', tipoJugadorRoutes)        
 router.use('/tipoJugadorPartido', tipoJugadorPartidoRoutes) 
 router.use('/torneo', torneoRoutes)
+router.use('/usuario', usuarioRoutes)
 
 module.exports = router;
