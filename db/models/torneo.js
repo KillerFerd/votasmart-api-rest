@@ -6,7 +6,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Torneo extends Model {
     static associate(models) {
-      Torneo.belongsTo(models.EstadoTorneo, { foreignKey: 'idEstado', field: 'id_estado', allowNull: false });
+      Torneo.belongsTo(models.EstadoTorneo, { foreignKey: 'idEstado', field: 'id_estado' });
       Torneo.hasMany(models.Jornada, { foreignKey: 'idTorneo', field: 'id_torneo', allowNull: false });
       Torneo.hasMany(models.EquipoTorneo, { foreignKey: 'idTorneo', field: 'id_torneo', allowNull: false });
     }
@@ -17,6 +17,12 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
+    idEstado: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1,
+      field: 'id_estado'
+    },    
     nombre: {
       type: DataTypes.STRING(75),
       allowNull: false
